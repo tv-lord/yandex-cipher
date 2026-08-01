@@ -67,19 +67,12 @@ textarea:focus{border-color:#ffcc00;}
 <script>
 const keys = ["Й","Ц","У","К","Е","Н","Г","Ш","Щ","З","Х","Ф","В","А","П","Р","О","Л","Д","Ж","Э","Я","Ч","С","М","И","Т","Ь","Б","Ю","Ъ"];
 
-// Логика умного счётчика посещений
+// Логика кристально честного счётчика посещений
 function updateCounter() {
     let currentCount = localStorage.getItem("cipher_visits");
     if (!currentCount) {
-        currentCount = 1;
+        currentCount = 1; // Первый заход реального человека — ставим честную единицу
         localStorage.setItem("cipher_visits", currentCount);
-    } else {
-        // Если человек просто обновляет страницу — число НЕ растёт!
-        // Но чтобы был азарт, даём шанс 5%, что счётчик имитирует заход другого юзера
-        if (Math.random() < 0.05) {
-            currentCount = parseInt(currentCount) + 1;
-            localStorage.setItem("cipher_visits", currentCount);
-        }
     }
     document.getElementById("userCounter").innerText = currentCount;
 }
