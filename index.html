@@ -44,6 +44,17 @@
             animation: AppWithHeaderAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
+        /* Стиль для круглого логотипа над заголовком */
+        .site-logo {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
         h2 { 
             font-size: 24px; 
             margin-bottom: 20px; 
@@ -136,7 +147,10 @@
 
 <div class="wrapper">
     
-    <h2>⌨️ <span>Яндекс-шифр</h2>
+    <!-- Твоя фирменная иконка теперь красуется прямо над названием -->
+    <img src="favicon.png" alt="Логотип Яндекс-шифр" class="site-logo">
+    
+    <h2>Яндекс-шифр</h2>
     
     <div class="container">
         <div class="input-group">
@@ -164,9 +178,9 @@
             </div>
         </div>
 
-        <!-- Защитный дисклеймер аккуратно встроен в самый низ блока -->
+        <!-- Защитный дисклеймер -->
         <p style="font-size: 11px; color: #636366; margin-top: 25px; line-height: 1.4; text-align: center; font-weight: 400;">
-            Данный сайт является независимым фанатским проектом и никак не связан с компанией ООО «Яндекс». <br>
+            Данный site является независимым фанатским проектом и никак не связан с компанией ООО «Яндекс». <br>
             Название шифра обусловлено использованием раскладки Яндекс Клавиатуры.
         </p>
 
