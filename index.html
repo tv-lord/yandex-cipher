@@ -23,12 +23,12 @@ textarea:focus{border-color:#ffcc00;}
 .action-buttons{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;}
 .icon-btn{background:#2c2c2e;border:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;}
 .icon-btn.btn-copy.active{background:#ffcc00;}
-.icon-btn.btn-copy.active svg{fill:#000000;}
-.counter-box{margin-top:25px;display:flex;justify-content:center;opacity:0.5;}
+.icon-btn.btn-copy.active svg {fill:#000000;}
+.counter-box{margin-top:25px;display:flex;justify-content:center;opacity:0.9;}
 .feedback-box{margin-top:24px;text-align:center;}
 .feedback-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;}
 .feedback-link{color:#ffcc00;font-weight:600;text-decoration:none;font-size:15px;display:inline-block;}
-.copyright-text{font-size:10px;color:#444446;margin-top:30px;text-align:center;line-height:1.3;opacity:0.5;}
+.copyright-text{font-size:10px;color:#444446;margin-top:30px;text-align:center;line-height:1.3;opacity:0.4;}
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:#ffcc00;color:#000000;padding:12px 24px;border-radius:20px;font-size:14px;font-weight:600;opacity:0;transition:all 0.4s;pointer-events:none;}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
 </style>
@@ -48,22 +48,21 @@ textarea:focus{border-color:#ffcc00;}
 <textarea id="outputText" class="result-box" placeholder="Здесь появится перевод..." readonly></textarea>
 <div class="action-buttons">
 <button id="copyBtn" class="icon-btn btn-copy" onclick="copyResult()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#8e8e93"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg></button>
-<button class="icon-btn" onclick="clearAll()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#ff453a"><path d="M9,3V4H4V6H6V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z"/></svg></button>
+<button class="icon-btn" onclick="clearAll()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#ff453a"><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z"/></svg></button>
 </div>
 </div>
 </div>
+<!-- Счётчик посещений внутри серого окошка перевода -->
 <div class="counter-box">
-<script type="text/javascript">
-var _tmr = window._tmr || (window._tmr = []); _tmr.push({id: "3565251", type: "pageView", start: (new Date()).getTime()});
-(function (d, w, id) { if (d.getElementById(id)) return; var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id; ts.src = "https://mail.ru"; var f = function () {var s = d.getElementsByTagName("script"); s.parentNode.insertBefore(ts, s);}; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "tmr-code");
-</script>
-<a href="https://mail.ru" target="_blank"><img src="https://mail.ru" style="border:0;" height="31" width="88" alt="Top.Mail.Ru" /></a>
+<a href="https://www.freecounterstat.com" target="_blank"><img src="https://counter11.optistats.ovh/private/freecounterstat.php?c=3y4g97u1tj79anmyl3he1tplb6q83tn9" border="0" alt="hit counter" style="max-width:100%;height:auto;"></a>
 </div>
 </div>
+<!-- Блок обратной связи ВНЕ окошка перевода -->
 <div class="feedback-box">
 <div class="feedback-title">Нашли баг или хотите предложить фичу?</div>
 <a href="https://t.me" target="_blank" class="feedback-link">Написать автору в Telegram 🚀</a>
 </div>
+<!-- Права в самом низу, незаметные -->
 <p class="copyright-text">Независимый фанатский проект. Не связано с ООО «Яндекс». Название обусловлено раскладкой Яндекс.Клавиатуры.</p>
 </div>
 <div id="toast" class="toast">Текст скопирован! 📋</div>
