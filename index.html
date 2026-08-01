@@ -2,10 +2,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!-- Улучшенный масштаб для мобильных телефонов -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Ключевые слова для продвижения сайта в топы Яндекса и Google -->
+    <title>Яндекс-шифр Переводчик онлайн</title>
+    <meta name="description" content="Яндекс-шифр — удобный онлайн переводчик и шифратор текста по раскладке клавиатуры смартфона. Шифруй сообщения мгновенно!">
+    <meta name="keywords" content="яндекс шифр, яндекс-шифр, шифр клавиатуры, зашифровать текст, клавиатурный шифр, шифратор онлайн">
+
+    <!-- Подключение вашей крутой иконки -->
     <link rel="icon" type="image/png" href="favicon.png">
-.   <link rel="apple-touch-icon" href="favicon.png">
-    <title>Яндекс-шифр Переводчик</title>
+    <link rel="apple-touch-icon" href="favicon.png">
+
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
@@ -27,18 +35,15 @@
             padding: 15px;
         }
 
-        /* Общая обертка для анимации и заголовка, и блока */
         .wrapper {
             width: 100%;
             max-width: 420px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Запуск железной анимации при загрузке страницы */
             animation: AppWithHeaderAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Заголовок теперь ОТДЕЛЬНО и СВЕРХУ блока */
         h2 { 
             font-size: 24px; 
             margin-bottom: 20px; 
@@ -48,13 +53,11 @@
             align-items: center;
             gap: 10px;
         }
-        /* Буква "Я" теперь НЕ жирная (обычная) */
         h2 span { 
             color: #f33c3c; 
             font-weight: 400; 
         } 
 
-        /* Основной блок с полями ввода */
         .container { 
             background: #1e1e20; 
             padding: 24px; 
@@ -84,7 +87,6 @@
         textarea:focus { border-color: #ffcc00; background: #323235; }
         textarea::placeholder { color: #636366; }
         
-        /* Блок результата со встроенными кнопками-иконками */
         .result-container { position: relative; width: 100%; }
         .result-box { 
             background: #151516; 
@@ -93,7 +95,6 @@
         }
         .result-box:focus { border-color: #2c2c2e; }
 
-        /* Панель с круглыми кнопками-картинками */
         .action-buttons {
             position: absolute;
             right: 10px;
@@ -119,11 +120,9 @@
         .icon-btn:hover { background: #3a3a3c; }
         .icon-btn:active { transform: scale(0.9); }
         
-        /* Выделение кнопки копирования фирменным цветом */
         .icon-btn.btn-copy.active { background: #ffcc00; }
         .icon-btn.btn-copy.active svg { fill: #000000; }
 
-        /* Всплывающее уведомление */
         .toast {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
             background: #ffcc00; color: #000000; padding: 12px 24px; border-radius: 20px;
@@ -135,11 +134,9 @@
 </head>
 <body>
 
-<!-- Вся структура обернута в один блок для плавной анимации входа -->
 <div class="wrapper">
     
-    <!-- Заголовок перенесен наверх, добавлена иконка клавиатуры, буква Я стала менее жирной -->
-    <h2>⌨️ <span>Яндекс-шифр</h2>
+    <h2>⌨️ <span>Я</span>ндекс-шифр</h2>
     
     <div class="container">
         <div class="input-group">
@@ -153,13 +150,11 @@
                 <textarea id="outputText" class="result-box" placeholder="Здесь отобразится готовый результат..." readonly></textarea>
                 
                 <div class="action-buttons">
-                    <!-- Иконка буфера обмена -->
                     <button id="copyBtn" class="icon-btn btn-copy" onclick="copyResult()" title="Копировать">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="#8e8e93" id="copyIcon">
                             <path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z" />
                         </svg>
                     </button>
-                    <!-- Иконка мусорки -->
                     <button class="icon-btn" onclick="clearAll()" title="Очистить">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff453a">
                             <path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
@@ -168,6 +163,13 @@
                 </div>
             </div>
         </div>
+
+        <!-- Защитный дисклеймер аккуратно встроен в самый низ блока -->
+        <p style="font-size: 11px; color: #636366; margin-top: 25px; line-height: 1.4; text-align: center; font-weight: 400;">
+            Данный сайт является независимым фанатским проектом и никак не связан с компанией ООО «Яндекс». <br>
+            Название шифра обусловлено использованием раскладки Яндекс Клавиатуры.
+        </p>
+
     </div>
 </div>
 
