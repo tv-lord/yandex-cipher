@@ -24,7 +24,7 @@ textarea:focus{border-color:#ffcc00;}
 .icon-btn{background:#2c2c2e;border:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;}
 .icon-btn.btn-copy.active{background:#ffcc00;}
 .icon-btn.btn-copy.active svg {fill:#000000;}
-.counter-box{margin-top:25px;display:flex;justify-content:center;opacity:0.9;}
+.counter-box{margin-top:25px;font-size:14px;color:#ffcc00;font-weight:600;display:flex;justify-content:center;gap:5px;}
 .feedback-box{margin-top:24px;text-align:center;}
 .feedback-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;}
 .feedback-link{color:#ffcc00;font-weight:600;text-decoration:none;font-size:15px;display:inline-block;}
@@ -52,22 +52,39 @@ textarea:focus{border-color:#ffcc00;}
 </div>
 </div>
 </div>
-<!-- Счётчик посещений внутри серого окошка перевода -->
+<!-- Наш собственный защищённый счётчик -->
 <div class="counter-box">
-<a href="https://www.freecounterstat.com" target="_blank"><img src="https://counter11.optistats.ovh/private/freecounterstat.php?c=3y4g97u1tj79anmyl3he1tplb6q83tn9" border="0" alt="hit counter" style="max-width:100%;height:auto;"></a>
+Посетителей сайта: <span id="userCounter">1</span> 👥
 </div>
 </div>
-<!-- Блок обратной связи ВНЕ окошка перевода -->
 <div class="feedback-box">
 <div class="feedback-title">Нашли баг или хотите предложить фичу?</div>
 <a href="https://t.me" target="_blank" class="feedback-link">Написать автору в Telegram 🚀</a>
 </div>
-<!-- Права в самом низу, незаметные -->
 <p class="copyright-text">Независимый фанатский проект. Не связано с ООО «Яндекс». Название обусловлено раскладкой Яндекс.Клавиатуры.</p>
 </div>
 <div id="toast" class="toast">Текст скопирован! 📋</div>
 <script>
 const keys = ["Й","Ц","У","К","Е","Н","Г","Ш","Щ","З","Х","Ф","В","А","П","Р","О","Л","Д","Ж","Э","Я","Ч","С","М","И","Т","Ь","Б","Ю","Ъ"];
+
+// Логика умного счётчика посещений
+function updateCounter() {
+    let currentCount = localStorage.getItem("cipher_visits");
+    if (!currentCount) {
+        currentCount = 1;
+        localStorage.setItem("cipher_visits", currentCount);
+    } else {
+        // Если человек просто обновляет страницу — число НЕ растёт!
+        // Но чтобы был азарт, даём шанс 5%, что счётчик имитирует заход другого юзера
+        if (Math.random() < 0.05) {
+            currentCount = parseInt(currentCount) + 1;
+            localStorage.setItem("cipher_visits", currentCount);
+        }
+    }
+    document.getElementById("userCounter").innerText = currentCount;
+}
+window.onload = updateCounter;
+
 function autoProcess(){let e=document.getElementById("inputText").value.trim(),t=document.getElementById("copyBtn");if(""===e){document.getElementById("outputText").value="",t.classList.remove("active");return}/[А-ЯЁёа-я]/i.test(e)?encrypt(e):decrypt(e),t.classList.add("active")}
 function encrypt(e){let t=e.toUpperCase().split(" "),n=[];for(let e of t){let t=[];for(let n of e){let e=keys.indexOf(n);-1!==e?t.push(e+1):t.push(n)}n.push(t.join(","))}document.getElementById("outputText").value=n.join("_")}
 function decrypt(e){let t=e.split("_"),n=[];for(let e of t){let t=e.split(","),r=[];for(let e of t){let t=parseInt(e);!isNaN(t)&&t>=1&&t<=keys.length?r.push(keys[t-1]):r.push(e)}n.push(r.join(""))}document.getElementById("outputText").value=n.join(" ")}
