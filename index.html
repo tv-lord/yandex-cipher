@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Яндекс-шифр Онлайн</title>
+    <title>Яндекс-шифр Переводчик онлайн</title>
+    <meta name="description" content="Яндекс-шифр — удобный онлайн переводчик и шифратор текста по раскладке клавиатуры смартфона.">
+    <meta name="keywords" content="яндекс шифр, яндекс-шифр, шифр клавиатуры, зашифровать текст">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
     <style>
@@ -27,8 +29,8 @@
         .icon-btn.btn-copy.active svg { fill: #000000; }
         .counter-box { margin-top: 25px; display: flex; justify-content: center; opacity: 0.5; }
         .feedback-box { margin-top: 24px; text-align: center; }
-        .feedback-title { font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; letter-spacing: -0.2px; }
-        .feedback-link { color: #ffcc00; font-weight: 600; text-decoration: none; font-size: 15px; display: inline-block; padding: 4px 8px; }
+        .feedback-title { font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+        .feedback-link { color: #ffcc00; font-weight: 600; text-decoration: none; font-size: 15px; display: inline-block; }
         .copyright-text { font-size: 10px; color: #444446; margin-top: 30px; text-align: center; line-height: 1.3; opacity: 0.5; }
         .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #ffcc00; color: #000000; padding: 12px 24px; border-radius: 20px; font-size: 14px; font-weight: 600; opacity: 0; transition: all 0.4s; pointer-events: none; }
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
@@ -37,7 +39,7 @@
 <body>
 <div class="wrapper">
     <img src="favicon.png" alt="Логотип Яндекс-шифр" class="site-logo">
-    <h2>⌨️ <span>Я</span>ндекс-шифр</h2>
+    <h2>Яндекс-шифр</h2>
     <div class="container">
         <div class="input-group">
             <label>Ввод (текст или цифры):</label>
@@ -53,27 +55,24 @@
                 </div>
             </div>
         </div>
-        <!-- 1. Счётчик теперь ВНУТРИ серого окошка в самом низу -->
         <div class="counter-box">
             <script type="text/javascript">
             var _tmr = window._tmr || (window._tmr = []); _tmr.push({id: "3565251", type: "pageView", start: (new Date()).getTime()});
             (function (d, w, id) { if (d.getElementById(id)) return; var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id; ts.src = "https://mail.ru"; var f = function () {var s = d.getElementsByTagName("script"); s.parentNode.insertBefore(ts, s);}; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "tmr-code");
             </script>
-            <a href="https://mail.ru" target="_blank"><img src="https://mail.ru" style="border:0;" height="31" width="88" alt="Top.Mail.Ru" /></a>
+            <a href="https://mail.ru" target="_blank">
+                <img src="https://mail.ru" style="border:0;" height="31" width="88" alt="Top.Mail.Ru" />
+            </a>
         </div>
     </div>
-    
-    <!-- 2. Обратная связь ВНЕ окошка (ниже), жирный белый текст и жёлтая ссылка -->
     <div class="feedback-box">
         <div class="feedback-title">Нашли баг или хотите предложить фичу?</div>
         <a href="https://t.me" target="_blank" class="feedback-link">Написать автору в Telegram 🚀</a>
     </div>
-
-    <!-- 3. Права в самом низу, максимально незаметные -->
     <p class="copyright-text">Независимый фанатский проект. Не связано с ООО «Яндекс». Название обусловлено раскладкой Яндекс.Клавиатуры.</p>
 </div>
 <div id="toast" class="toast">Текст скопирован! 📋</div>
-    <script>
+<script>
 const keys = ["Й","Ц","У","К","Е","Н","Г","Ш","Щ","З","Х","Ф","В","А","П","Р","О","Л","Д","Ж","Э","Я","Ч","С","М","И","Т","Ь","Б","Ю","Ъ"];
 
 function autoProcess() {
