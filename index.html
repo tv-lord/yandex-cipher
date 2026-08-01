@@ -1,156 +1,79 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Яндекс-шифр Переводчик онлайн</title>
-    <meta name="description" content="Яндекс-шифр — удобный онлайн переводчик и шифратор текста по раскладке клавиатуры смартфона.">
-    <meta name="keywords" content="яндекс шифр, яндекс-шифр, шифр клавиатуры, зашифровать текст">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        @keyframes AppAppear { 0% { opacity: 0; transform: translateY(20px); filter: blur(5px); } 100% { opacity: 1; transform: translateY(0); filter: blur(0); } }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #111112; color: #ffffff; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; }
-        .wrapper { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; animation: AppAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-        .site-logo { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); }
-        h2 { font-size: 24px; margin-bottom: 20px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-        h2 span { color: #f33c3c; font-weight: 400; } 
-        .container { background: #1e1e20; padding: 24px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); width: 100%; border: 1px solid rgba(255,255,255,0.03); text-align: center; }
-        .input-group { margin-bottom: 20px; text-align: left; }
-        label { display: block; font-size: 12px; color: #8e8e93; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; }
-        textarea { width: 100%; height: 100px; padding: 14px; border-radius: 14px; border: 2px solid #2c2c2e; background: #2c2c2e; color: #ffffff; font-size: 16px; resize: none; outline: none; }
-        textarea:focus { border-color: #ffcc00; }
-        .result-container { position: relative; width: 100%; }
-        .result-box { background: #151516; border: 2px solid #151516; padding-right: 55px; }
-        .action-buttons { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; }
-        .icon-btn { background: #2c2c2e; border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .icon-btn.btn-copy.active { background: #ffcc00; }
-        .icon-btn.btn-copy.active svg { fill: #000000; }
-        .counter-box { margin-top: 25px; display: flex; justify-content: center; opacity: 0.5; }
-        .feedback-box { margin-top: 24px; text-align: center; }
-        .feedback-title { font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
-        .feedback-link { color: #ffcc00; font-weight: 600; text-decoration: none; font-size: 15px; display: inline-block; }
-        .copyright-text { font-size: 10px; color: #444446; margin-top: 30px; text-align: center; line-height: 1.3; opacity: 0.5; }
-        .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #ffcc00; color: #000000; padding: 12px 24px; border-radius: 20px; font-size: 14px; font-weight: 600; opacity: 0; transition: all 0.4s; pointer-events: none; }
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Яндекс-шифр Переводчик онлайн</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,sans-serif;background:#111112;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;padding:15px;}
+.wrapper{width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;}
+.site-logo{width:70px;height:70px;border-radius:50%;object-fit:cover;margin-bottom:12px;box-shadow:0 4px 15px rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.1);}
+h2{font-size:24px;margin-bottom:20px;font-weight:700;display:flex;align-items:center;gap:10px;}
+h2 span{color:#f33c3c;font-weight:400;}
+.container{background:#1e1e20;padding:24px;border-radius:24px;box-shadow:0 20px 40px rgba(0,0,0,0.6);width:100%;border:1px solid rgba(255,255,255,0.03);text-align:center;}
+.input-group{margin-bottom:20px;text-align:left;}
+label{display:block;font-size:12px;color:#8e8e93;margin-bottom:8px;font-weight:600;text-transform:uppercase;}
+textarea{width:100%;height:100px;padding:14px;border-radius:14px;border:2px solid #2c2c2e;background:#2c2c2e;color:#fff;font-size:16px;resize:none;outline:none;}
+textarea:focus{border-color:#ffcc00;}
+.result-container{position:relative;width:100%;}
+.result-box{background:#151516;border:2px solid #151516;padding-right:55px;}
+.action-buttons{position:absolute;right:10px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;}
+.icon-btn{background:#2c2c2e;border:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.icon-btn.btn-copy.active{background:#ffcc00;}
+.icon-btn.btn-copy.active svg{fill:#000000;}
+.counter-box{margin-top:25px;display:flex;justify-content:center;opacity:0.5;}
+.feedback-box{margin-top:24px;text-align:center;}
+.feedback-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px;}
+.feedback-link{color:#ffcc00;font-weight:600;text-decoration:none;font-size:15px;display:inline-block;}
+.copyright-text{font-size:10px;color:#444446;margin-top:30px;text-align:center;line-height:1.3;opacity:0.5;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:#ffcc00;color:#000000;padding:12px 24px;border-radius:20px;font-size:14px;font-weight:600;opacity:0;transition:all 0.4s;pointer-events:none;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+</style>
 </head>
 <body>
 <div class="wrapper">
-    <img src="favicon.png" alt="Логотип Яндекс-шифр" class="site-logo">
-    <h2>Яндекс-шифр</h2>
-    <div class="container">
-        <div class="input-group">
-            <label>Ввод (текст или цифры):</label>
-            <textarea id="inputText" placeholder="Начните писать текст..." oninput="autoProcess()"></textarea>
-        </div>
-        <div class="input-group">
-            <label>Результат перевода:</label>
-            <div class="result-container">
-                <textarea id="outputText" class="result-box" placeholder="Здесь появится перевод..." readonly></textarea>
-                <div class="action-buttons">
-                    <button id="copyBtn" class="icon-btn btn-copy" onclick="copyResult()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#8e8e93"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg></button>
-                    <button class="icon-btn" onclick="clearAll()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#ff453a"><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z"/></svg></button>
-                </div>
-            </div>
-        </div>
-        <div class="counter-box">
-            <script type="text/javascript">
-            var _tmr = window._tmr || (window._tmr = []); _tmr.push({id: "3565251", type: "pageView", start: (new Date()).getTime()});
-            (function (d, w, id) { if (d.getElementById(id)) return; var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id; ts.src = "https://mail.ru"; var f = function () {var s = d.getElementsByTagName("script"); s.parentNode.insertBefore(ts, s);}; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "tmr-code");
-            </script>
-            <a href="https://mail.ru" target="_blank">
-                <img src="https://mail.ru" style="border:0;" height="31" width="88" alt="Top.Mail.Ru" />
-            </a>
-        </div>
-    </div>
-    <div class="feedback-box">
-        <div class="feedback-title">Нашли баг или хотите предложить фичу?</div>
-        <a href="https://t.me" target="_blank" class="feedback-link">Написать автору в Telegram 🚀</a>
-    </div>
-    <p class="copyright-text">Независимый фанатский проект. Не связано с ООО «Яндекс». Название обусловлено раскладкой Яндекс.Клавиатуры.</p>
+<img src="favicon.png" alt="Логотип" class="site-logo">
+<h2>⌨️ <span>Я</span>ндекс-шифр</h2>
+<div class="container">
+<div class="input-group">
+<label>Ввод (текст или цифры):</label>
+<textarea id="inputText" placeholder="Начните писать текст..." oninput="autoProcess()"></textarea>
+</div>
+<div class="input-group">
+<label>Результат перевода:</label>
+<div class="result-container">
+<textarea id="outputText" class="result-box" placeholder="Здесь появится перевод..." readonly></textarea>
+<div class="action-buttons">
+<button id="copyBtn" class="icon-btn btn-copy" onclick="copyResult()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#8e8e93"><path d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg></button>
+<button class="icon-btn" onclick="clearAll()"><svg width="18" height="18" viewBox="0 0 24 24" fill="#ff453a"><path d="M9,3V4H4V6H6V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z"/></svg></button>
+</div>
+</div>
+</div>
+<div class="counter-box">
+<script type="text/javascript">
+var _tmr = window._tmr || (window._tmr = []); _tmr.push({id: "3565251", type: "pageView", start: (new Date()).getTime()});
+(function (d, w, id) { if (d.getElementById(id)) return; var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id; ts.src = "https://mail.ru"; var f = function () {var s = d.getElementsByTagName("script"); s.parentNode.insertBefore(ts, s);}; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "tmr-code");
+</script>
+<a href="https://mail.ru" target="_blank"><img src="https://mail.ru" style="border:0;" height="31" width="88" alt="Top.Mail.Ru" /></a>
+</div>
+</div>
+<div class="feedback-box">
+<div class="feedback-title">Нашли баг или хотите предложить фичу?</div>
+<a href="https://t.me" target="_blank" class="feedback-link">Написать автору в Telegram 🚀</a>
+</div>
+<p class="copyright-text">Независимый фанатский проект. Не связано с ООО «Яндекс». Название обусловлено раскладкой Яндекс.Клавиатуры.</p>
 </div>
 <div id="toast" class="toast">Текст скопирован! 📋</div>
 <script>
 const keys = ["Й","Ц","У","К","Е","Н","Г","Ш","Щ","З","Х","Ф","В","А","П","Р","О","Л","Д","Ж","Э","Я","Ч","С","М","И","Т","Ь","Б","Ю","Ъ"];
-
-function autoProcess() {
-    let input = document.getElementById("inputText").value.trim();
-    let outputBtn = document.getElementById("copyBtn");
-    
-    if (input === "") {
-        document.getElementById("outputText").value = "";
-        outputBtn.classList.remove("active");
-        return;
-    }
-
-    let hasRussianLetters = /[А-ЯЁёа-я]/i.test(input);
-
-    if (hasRussianLetters) {
-        encrypt(input);
-    } else {
-        decrypt(input);
-    }
-    
-    outputBtn.classList.add("active");
-}
-
-function encrypt(text) {
-    let words = text.toUpperCase().split(" ");
-    let encryptedWords = [];
-
-    for (let word of words) {
-        let encryptedLetters = [];
-        for (let char of word) {
-            let index = keys.indexOf(char);
-            if (index !== -1) {
-                encryptedLetters.push(index + 1);
-            } else {
-                encryptedLetters.push(char);
-            }
-        }
-        encryptedWords.push(encryptedLetters.join(","));
-    }
-    document.getElementById("outputText").value = encryptedWords.join("_");
-}
-
-function decrypt(text) {
-    let words = text.split("_");
-    let decryptedWords = [];
-
-    for (let word of words) {
-        let tokens = word.split(",");
-        let decryptedLetters = [];
-        for (let token of tokens) {
-            let num = parseInt(token);
-            if (!isNaN(num) && num >= 1 && num <= keys.length) {
-                decryptedLetters.push(keys[num - 1]);
-            } else {
-                decryptedLetters.push(token);
-            }
-        }
-        decryptedWords.push(decryptedLetters.join(""));
-    }
-    document.getElementById("outputText").value = decryptedWords.join(" ");
-}
-
-function copyResult() {
-    let output = document.getElementById("outputText");
-    if (output.value === "") return;
-    
-    navigator.clipboard.writeText(output.value).then(() => {
-        let toast = document.getElementById("toast");
-        toast.className = "toast show";
-        setTimeout(() => { toast.className = "toast"; }, 2200);
-    });
-}
-
-function clearAll() {
-    document.getElementById("inputText").value = "";
-    document.getElementById("outputText").value = "";
-    document.getElementById("copyBtn").classList.remove("active");
-}
+function autoProcess(){let e=document.getElementById("inputText").value.trim(),t=document.getElementById("copyBtn");if(""===e){document.getElementById("outputText").value="",t.classList.remove("active");return}/[А-ЯЁёа-я]/i.test(e)?encrypt(e):decrypt(e),t.classList.add("active")}
+function encrypt(e){let t=e.toUpperCase().split(" "),n=[];for(let e of t){let t=[];for(let n of e){let e=keys.indexOf(n);-1!==e?t.push(e+1):t.push(n)}n.push(t.join(","))}document.getElementById("outputText").value=n.join("_")}
+function decrypt(e){let t=e.split("_"),n=[];for(let e of t){let t=e.split(","),r=[];for(let e of t){let t=parseInt(e);!isNaN(t)&&t>=1&&t<=keys.length?r.push(keys[t-1]):r.push(e)}n.push(r.join(""))}document.getElementById("outputText").value=n.join(" ")}
+function copyResult(){let e=document.getElementById("outputText");if(""!==e.value)navigator.clipboard.writeText(e.value).then(()=>{let e=document.getElementById("toast");e.className="toast show",setTimeout(()=>{e.className="toast"},2200)})}
+function clearAll(){document.getElementById("inputText").value="",document.getElementById("outputText").value="",document.getElementById("copyBtn").classList.remove("active")}
 </script>
 </body>
 </html>
