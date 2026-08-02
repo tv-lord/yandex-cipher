@@ -52,32 +52,33 @@ textarea:focus{border-color:#ffcc00;}
 </div>
 </div>
 </div>
-<!-- Наш собственный защищённый счётчик -->
-<div class="counter-box">
-Посетителей сайта: <span id="userCounter">1</span> 👥
-</div>
-</div>
-<div class="feedback-box">
-<div class="feedback-title">Нашли баг или хотите предложить фичу?</div>
-<a href="https://t.me/yandex_cipher_feedback_bot" target="_blank" class="feedback-link">Написать автору в Telegram 🚀</a>
-</div>
-<p class="copyright-text">Независимый фанатский проект. Не связано с ООО «Яндекс». Название обусловлено раскладкой Яндекс.Клавиатуры.</p>
-</div>
-<div id="toast" class="toast">Текст скопирован! 📋</div>
-<script>
-const keys = ["Й","Ц","У","К","Е","Н","Г","Ш","Щ","З","Х","Ф","В","А","П","Р","О","Л","Д","Ж","Э","Я","Ч","С","М","И","Т","Ь","Б","Ю","Ъ"];
-
-// Логика кристально честного счётчика посещений
+// Честный счётчик через CounterAPI с защитой от накрутки при перезагрузке
 function updateCounter() {
-    let currentCount = localStorage.getItem("cipher_visits");
-    if (!currentCount) {
-        currentCount = 1; // Первый заход реального человека — ставим честную единицу
-        localStorage.setItem("cipher_visits", currentCount);
+    const namespace = "tv-lord-cipher"; // Твой уникальный ID проекта
+    const key = "visits";               // Название счётчика
+
+    let hasVisited = localStorage.getItem("cipher_visited_cloud");
+
+    if (!hasVisited) {
+        // Человек зашёл впервые: отправляем запрос на ПРИБАВЛЕНИЕ (+1)
+        fetch(`https://counterapi.dev{namespace}/${key}/up`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("userCounter").innerText = data.value;
+                localStorage.setItem("cipher_visited_cloud", "true"); // Ставим метку, чтобы больше не крутил
+            })
+            .catch(err => console.log("Ошибка счётчика:", err));
+    } else {
+        // Человек уже заходил: просто ЗАБИРАЕМ текущее число без увеличения
+        fetch(`https://counterapi.dev{namespace}/${key}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("userCounter").innerText = data.value;
+            })
+            .catch(err => console.log("Ошибка счётчика:", err));
     }
-    document.getElementById("userCounter").innerText = currentCount;
 }
 window.onload = updateCounter;
-
 function autoProcess(){let e=document.getElementById("inputText").value.trim(),t=document.getElementById("copyBtn");if(""===e){document.getElementById("outputText").value="",t.classList.remove("active");return}/[А-ЯЁёа-я]/i.test(e)?encrypt(e):decrypt(e),t.classList.add("active")}
 function encrypt(e){let t=e.toUpperCase().split(" "),n=[];for(let e of t){let t=[];for(let n of e){let e=keys.indexOf(n);-1!==e?t.push(e+1):t.push(n)}n.push(t.join(","))}document.getElementById("outputText").value=n.join("_")}
 function decrypt(e){let t=e.split("_"),n=[];for(let e of t){let t=e.split(","),r=[];for(let e of t){let t=parseInt(e);!isNaN(t)&&t>=1&&t<=keys.length?r.push(keys[t-1]):r.push(e)}n.push(r.join(""))}document.getElementById("outputText").value=n.join(" ")}
